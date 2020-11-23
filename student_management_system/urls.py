@@ -18,22 +18,36 @@ from django.contrib import admin
 from django.urls import path
 from django.shortcuts import render, HttpResponse
 
+
 def index(request):
 
-    #业务逻辑
+    # 业务逻辑
 
-    #返回请求
+    # 返回请求
 
-    #return HttpResponse('index')
-    return render(request,'index.html')#返回html页面
+    # return HttpResponse('index')
+    return render(request, 'index.html')  # 返回html页面
+
 
 def login(request):
-    return render(request,'login.html')
+
+    if request.method == 'POST':
+        # 处理post请求
+        # 获取到用户提交的用户名和密码
+        user = request.POST.get('user')
+        password = request.POST.get('password')
+        # 进行校验
+        if user == 'icebird233@outlook.com' and password == '123':
+            # 校验成功，告知登陆成功
+            return HttpResponse('登陆成功')
+            # return render(request, 'login2.html')
+    return render(request, 'login.html')
+
 
 admin.autodiscover()
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', login),
-    path('index/',index)
+    path('index/', index)
 ]
