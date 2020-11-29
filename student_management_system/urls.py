@@ -16,38 +16,17 @@ Including another URLconf
 from django.conf.urls import *
 from django.contrib import admin
 from django.urls import path
-from django.shortcuts import render, HttpResponse
-
-
-def index(request):
-
-    # 业务逻辑
-
-    # 返回请求
-
-    # return HttpResponse('index')
-    return render(request, 'index.html')  # 返回html页面
-
-
-def login(request):
-
-    if request.method == 'POST':
-        # 处理post请求
-        # 获取到用户提交的用户名和密码
-        user = request.POST.get('user')
-        password = request.POST.get('password')
-        # 进行校验
-        if user == 'icebird233@outlook.com' and password == '123':
-            # 校验成功，告知登陆成功
-            return HttpResponse('登陆成功')
-            # return render(request, 'login2.html')
-    return render(request, 'login.html')
-
+from api import views
 
 admin.autodiscover()
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('login/', login),
-    path('index/', index)
+    path('login/', views.login),
+    path('index/', views.index),
+    path('department_list/', views.department_list),
+    path('department_add/', views.department_add),
+    path('department_del/', views.department_del),
+    path('department_edit/', views.department_edit),
+
 ]

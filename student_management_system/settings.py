@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 import os
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -27,7 +28,7 @@ SECRET_KEY = 'n$k^157f+b7u92la6xp31dqo(%9up0m&cwl!+!85u4i42z6r&b'
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-#允许访问
+# 允许访问
 
 # Application definition
 
@@ -38,13 +39,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'api.apps.ApiConfig',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    #'django.middleware.csrf.CsrfViewMiddleware',用于保护的中间件
+    # 'django.middleware.csrf.CsrfViewMiddleware',用于保护的中间件
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -87,6 +89,7 @@ DATABASES = {
 }
 
 
+
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
@@ -126,7 +129,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR,'static'),
-    os.path.join(BASE_DIR,'static1'),
-    os.path.join(BASE_DIR,'static2'),
+    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'static1'),
+    os.path.join(BASE_DIR, 'static2'),
 ]
