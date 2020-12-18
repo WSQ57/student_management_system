@@ -38,36 +38,45 @@
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
-                <li class="active"><a href="/department_list/">学院列表 </a></li>
-                <li><a href="/course_list/">课程列表 </a></li>
+                <li><a href="/department_list/">学院列表 </a></li>
+                <li class="active"><a href="/course_list/">课程列表 </a></li>
                 <li><a href="#">Analytics</a></li>
                 <li><a href="#">Export</a></li>
             </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <h2 class="sub-header">学院列表</h2>
+            <h2 class="sub-header">课程列表</h2>
             <div class="table-responsive">
                 <table class="table table-bordered table-hover">
                     <thead>
                     <tr>
-                        <th>dept_id</th>
-                        <th>dept_name</th>
-                        <th>dept_address</th>
+                        <th>course_id</th>
+                        <th>course_name</th>
+                        <th>course_credit</th>
+                        <th>course_place</th>
+                        <th>course_time</th>
+                        <th>teacher</th>
+                        <th>department</th>
                         <th>操作</th>
                     </tr>
                     </thead>
                     <tbody>
-                    {% for foo in all_department %}
+
+                    {% for course in all_course %}
                         <tr>
-                            <td>{{ foo.dept_id }}</td>
-                            <td>{{ foo.dept_name }}</td>
-                            <td>{{ foo.address }}</td>
+                            <td>{{ course.course_id }}</td>
+                            <td>{{ course.course_name }}</td>
+                            <td>{{ course.course_credit }}</td>
+                            <td>{{ course.course_place }}</td>
+                            <td>{{ course.course_time }}</td>
+                            <td>{{ course.teacher.teacher_name }}</td>
+                            <td>{{ course.department.dept_name }}</td>
                             <td>
-                                <a class="btn btn-primary" href="/department_edit/?dept_id={{ foo.dept_id }}">编辑</a>
-                                <a class="btn btn-danger btn-sm" href="/department_del/?dept_id={{ foo.dept_id }}">删除</a>
+                                <a class="btn btn-danger btn-sm" href="/course_del/?course_id={{ course.course_id }}">删除</a>
                             </td>
                         </tr>
                     {% endfor %}
+
 
                     </tbody>
                 </table>
@@ -76,39 +85,7 @@
     </div>
 </div>
 
-<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
 
 </body>
 
-
-{#<body>#}
-{#<p><a href='/department_add/'>新增</a></p>#}
-{##}
-{#<table border="1">#}
-{#    <thead>#}
-{#    <tr>#}
-{#        <th>dept_id</th>#}
-{#        <th>dept_name</th>#}
-{#        <th>name</th>#}
-{#        <th>操作</th>#}
-{#    </tr>#}
-{#    </thead>#}
-{#    <tbody>#}
-{#    {% for foo in all_department %}#}
-{#        <tr>#}
-{#            <td>{{ foo.dept_id }}</td>#}
-{#            <td>{{ foo.dept_name }}</td>#}
-{#            <td>{{ foo.address }}</td>#}
-{#            <td>#}
-{#                <a href="/department_edit/?dept_id={{ foo.dept_id }}">编辑</a>#}
-{#                <a href="/department_del/?dept_id={{ foo.dept_id }}">删除</a>#}
-{#            </td>#}
-{#        </tr>#}
-{#    {% endfor %}#}
-{##}
-{#    </tbody>#}
-{#</table>#}
-{#</body>#}
 </html>

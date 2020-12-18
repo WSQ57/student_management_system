@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="" method="post">
+    <p>课程id: <input type="text" name="c_id"> <span>{{ error1 }}</span> </p>
+    <p>课程名称: <input type="text" name="c_name"> <span>{{ error2 }}</span></p>
+    <p>课程学分: <input type="text" name="c_credit"></p>
+    <p>课程地点: <input type="text" name="c_address"><span>{{ error3 }}</span></p>
+    <p>课程时间: <input type="text" name="c_time"><span>{{ error4 }}</span></p>
+    <p>
+        课程教师:
+        <select name="teacher" id="">
+
+            {% for teacher in all_teacher %}
+                <option value="{{ teacher.teacher_id }}">{{ teacher.teacher_name }}</option>
+            {% endfor %}
+
+        </select>
+    </p>
+    <p>
+        开课学院：
+        <select name="department" id="">
+
+            {% for department in all_department %}
+                <option value="{{ department.dept_id }}">{{ department.dept_name }}</option>
+            {% endfor %}
+
+        </select>
+    </p>
+    <button>提交</button>
+</body>
+</html>

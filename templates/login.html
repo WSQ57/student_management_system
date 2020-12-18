@@ -18,10 +18,15 @@
 
     <form class="form-signin" action="" method="post">
         <h2 class="form-signin-heading">Please sign in</h2>
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" id="inputEmail" name="user" class="form-control" placeholder="Email address" required autofocus>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
+        <div class="form-group {% if error %}has-error{% endif %}">
+            <label for="inputEmail" class="sr-only">User_name</label>
+            <input type="text" id="inputEmail" name="user" class="form-control" placeholder="User_name" required
+                   autofocus>
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password"
+                   required>
+            <span class="help-block">{{ error }}</span>
+        </div>
         <div class="checkbox">
             <label>
                 <input type="checkbox" value="remember-me"> Remember me
@@ -32,8 +37,10 @@
 
 </div> <!-- /container -->
 
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+{#<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>#}
 </body>
 </html>

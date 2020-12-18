@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>教师管理系统</title>
+    <link rel="stylesheet" href="/static/plugins/bootstrap-3.3.7-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/plugins/bootstrap-3.3.7-dist/css/dashboard.css">
+    {% if error %}
+        <script>
+            alert('{{ error }}');
+            window.location.href = "/self_course/"
+        </script>
+    {% endif %}
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">教师管理系统</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/my_students/">学生名单</a></li>
+                <li><a href="/export_students_csv/">导出XLS</a></li>
+                <li><a href="/export_students_csv/">导出CSV</a></li>
+                <li><a href="/user_logout/">登出</a></li>
+            </ul>
+            <form class="navbar-form navbar-right">
+                <input type="text" class="form-control" placeholder="Search...">
+            </form>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li><a href="/teacher_management/">成绩录入 </a></li>
+                <li><a href="/teacher_course/">开课课程 </a></li>
+                <li><a href="/teacher_information/">我的信息</a></li>
+                <li class="active"><a href="/my_students/">我的学生</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h2 class="sub-header">学生列表</h2>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th>所上课程</th>
+                        <th>student_id</th>
+                        <th>student_name</th>
+                        <th>student_sex</th>
+                        <th>department</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {% for i in sc %}
+                        <tr>
+                            <td>{{ i.course.course_name }}</td>
+                            <td>{{ i.student.student_id }}</td>
+                            <td>{{ i.student.student_name }}</td>
+                            <td>{{ i.student.student_sex }}</td>
+                            <td>{{ i.student.department.dept_name }}</td>
+
+                        </tr>
+
+                    {% endfor %}
+
+
+            </div>
+
+
+            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+</body>
+
+</html>
