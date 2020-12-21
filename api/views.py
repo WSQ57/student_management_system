@@ -160,7 +160,11 @@ def course_del(request):
 
 @login_required(login_url='/login/')
 def student_elective(request):
-    all_course = models.Course.objects.all()
+    c_id = request.POST.get('c_id')
+    if request.method == 'POST' and c_id != "":
+        all_course = models.Course.objects.filter(pk=c_id)
+    else :
+        all_course = models.Course.objects.all()
     paginator = Paginator(all_course, 5)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
@@ -182,8 +186,12 @@ def elect_course(request):
 
 @login_required(login_url='/login/')
 def self_course(request):
+
     s_id = request.user.username
-    all_elective = models.student_course.objects.filter(student_id=s_id)
+    c_id = request.POST.get('c_id')
+    if request.method == 'POST' and c_id != "":
+        all_elective = models.student_course.objects.filter(course_id=c_id,student_id=s_id)
+    else: all_elective = models.student_course.objects.filter(student_id=s_id)
 
     return render(request, 'self_course.html', {'all_elective': all_elective})
 
@@ -198,7 +206,11 @@ def self_information(request):
 @login_required(login_url='/login/')
 def history_course(request):
     s_id = request.user.username
-    all_elective = models.student_course.objects.filter(student_id=s_id)
+    c_id = request.POST.get('c_id')
+    if request.method == 'POST' and c_id != "":
+        all_elective = models.student_course.objects.filter(course_id=c_id,student_id=s_id)
+    else:
+        all_elective = models.student_course.objects.filter(student_id=s_id)
 
     return render(request, 'history_course.html', {'all_elective': all_elective})
 
@@ -253,8 +265,11 @@ def export_users_xls(request):
 @login_required(login_url='/login/')
 def teacher_management(request):
     t_id = request.user.username
-    courses = models.student_course.objects.filter(teacher_id=t_id).order_by('course_id')
-    print(courses)
+    s_id = request.POST.get('s_id')
+    if request.method == 'POST' and s_id != "":
+        courses = models.student_course.objects.filter(student_id=s_id,teacher_id=t_id)
+    else:
+        courses = models.student_course.objects.filter(teacher_id=t_id).order_by('course_id')
     paginator = Paginator(courses, 5)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
@@ -280,7 +295,10 @@ def score_edit(request):
 @login_required(login_url='/login/')
 def teacher_course(request):
     t_id = request.user.username
-    all_courses = models.Course.objects.filter(teacher_id=t_id)
+    c_id = request.POST.get('c_id')
+    if request.method == 'POST' and c_id != "":
+        all_courses = models.Course.objects.filter(course_id=c_id, teacher_id=t_id)
+    else: all_courses = models.Course.objects.filter(teacher_id=t_id)
     return render(request, 'teacher_course.html', {'all_courses': all_courses})
 
 
@@ -294,7 +312,10 @@ def teacher_information(request):
 @login_required(login_url='/login/')
 def my_students(request):
     t_id = request.user.username
-    sc = models.student_course.objects.filter(teacher_id=t_id).order_by('course__course_name')
+    s_id = request.POST.get('s_id')
+    if request.method == 'POST' and s_id != "":
+        sc = models.student_course.objects.filter(student_id=s_id,teacher_id=t_id)
+    else: sc = models.student_course.objects.filter(teacher_id=t_id).order_by('course__course_name')
     return render(request, 'my_students.html', {'sc': sc})
 
 
