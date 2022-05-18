@@ -5,16 +5,6 @@ import sys
 
 hahah = "kjalsdkjfldsjf"
 
-jdasfl;adsk
-fjalkdsjf;a4
-
-fadskjfalsd
-adskjflasjdf
-akjldsfal;sd;fadskjfalsd
-fadskjfalsdasdf
-
-afsdfa
-
 def main():
     """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'student_management_system.settings')
@@ -25,6 +15,22 @@ def main():
             "Couldn't import Django. Are you sure it's installed and "
             "available on your PYTHONPATH environment variable? Did you "
             "forget to activate a virtual environment?"
+            
+            "fdakjsfjladsf"
+            "fsadfsdafa"
+            "skfgjlsfd"
+            "gsgkjfglsf"
+            "gslkgjlfsdgs"
+            "kllsgfd;llgs"
+            "gsjfdglksjdfgjks"
+            
+            "gklsjlfglsdfgsdfgsfd"
+            "gsjklfgjksfldg"
+            "gklsfdkglsfdgsf"
+
+            "gsklfjglkdsjfgl;sjfdg"
+            "fgskldjgsldfg"
+            "gjsfgklfdgjksfg"
         ) from exc
     execute_from_command_line(sys.argv)
 
