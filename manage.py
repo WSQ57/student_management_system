@@ -4,6 +4,17 @@ import os
 import sys
 
 hahah = "kjalsdkjfldsjf"
+
+jdasfl;adsk
+fjalkdsjf;a4
+
+fadskjfalsd
+adskjflasjdf
+akjldsfal;sd;fadskjfalsd
+fadskjfalsdasdf
+
+afsdfa
+
 def main():
     """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'student_management_system.settings')
